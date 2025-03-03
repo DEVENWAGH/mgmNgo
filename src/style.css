@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+/* Animation styles */
+.grid > a {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Ensure sections have some space for scroll animations */
+section {
+  padding: 2rem 0;
+  overflow: hidden; /* Prevents horizontal scrollbar during animations */
+}
+
+/* Box shadow for hover effects */
+.shadow-md {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for when an element is visible during scroll */
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Override hover behavior for touch devices */
+@media (hover: none) {
+  .grid > a:hover {
+    transform: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Custom styles */
+.animate-fade-up {
+  @apply transform transition duration-500 ease-in-out;
+}
+
+.animate-fade-up:hover {
+  @apply -translate-y-1 shadow-lg;
+}
+
+/* Form styles */
+.form-input {
+  @apply w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-green-500;
+}
+
+.btn-primary {
+  @apply bg-green-600 text-white font-bold py-2 px-4 rounded hover:bg-green-700 transition duration-300;
+}
+
+/* Card styles */
+.card {
+  @apply bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300;
+}
+
+/* Auth message styles */
+.auth-message {
+  @apply mb-4 p-4 rounded border-l-4;
+}
+
+.auth-success {
+  @apply bg-green-100 border-green-500 text-green-700;
+}
+
+.auth-error {
+  @apply bg-red-100 border-red-500 text-red-700;
+}
+
+/* Logged in user styles */
+.logged-in {
+  @apply font-semibold text-green-200;
+}
