@@ -7,6 +7,8 @@ import connectDB from "./db.js";
 import authRoutes from "./routes/auth.js";
 import donationRoutes from "./routes/donations.js";
 import contactRoutes from "./routes/contact.js";
+import healthServicesRoutes from "./routes/healthServices.js";
+import appointmentsRoute from "./routes/appointments.js";
 
 // Get the directory name of the current module
 const __filename = fileURLToPath(import.meta.url);
@@ -21,6 +23,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Serve static files from public directory
+app.use(express.static(path.join(__dirname, "../../public")));
+
+// Serve static files from root directory where images are located
+app.use(express.static(path.join(__dirname, "../../")));
+
 // Connect to MongoDB
 connectDB();
 
@@ -28,6 +36,8 @@ connectDB();
 app.use("/api/auth", authRoutes);
 app.use("/api/donations", donationRoutes);
 app.use("/api/contact", contactRoutes);
+app.use("/api/health-services", healthServicesRoutes);
+app.use("/api/appointments", appointmentsRoute);
 
 // Test route
 app.get("/api/test", (req, res) => {

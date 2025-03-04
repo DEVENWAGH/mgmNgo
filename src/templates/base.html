@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%PAGE_TITLE%> - MGM NGO</title>
+    <link href="/src/style.css" rel="stylesheet" />
+    <link href="/src/theme.css" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css"
+    />
+
+    <!-- Common Tailwind Classes -->
+    <style>
+      .page-section {
+        @apply py-12 px-4 md:px-8;
+      }
+
+      .section-title {
+        @apply text-3xl font-bold mb-8 text-center;
+      }
+
+      .card {
+        @apply bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden;
+      }
+
+      .image-card {
+        @apply relative overflow-hidden rounded-lg cursor-pointer;
+      }
+
+      .stat-card {
+        @apply p-6 text-center bg-gradient-to-br from-primary-light to-primary-dark text-white rounded-lg;
+      }
+
+      .stat-number {
+        @apply text-4xl font-bold mb-2;
+      }
+
+      .animate-on-scroll {
+        @apply opacity-0;
+      }
+    </style>
+  </head>
+  <body class="flex flex-col min-h-screen bg-gray-50">
+    <header class="mgm-header sticky top-0 z-50">
+      <!-- ...header content... -->
+    </header>
+
+    <main class="flex-1"><%MAIN_CONTENT%></main>
+
+    <footer class="mgm-footer">
+      <!-- ...footer content... -->
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.7/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.7/ScrollTrigger.min.js"></script>
+    <script type="module">
+      import { initPageAnimations } from "/src/utils/animations.js";
+
+      document.addEventListener("DOMContentLoaded", () => {
+        // Initialize GSAP animations
+        initPageAnimations();
+
+        // Initialize ScrollTrigger
+        if (typeof gsap !== "undefined" && gsap.registerPlugin) {
+          gsap.registerPlugin(ScrollTrigger);
+        }
+      });
+    </script>
+  </body>
+</html>

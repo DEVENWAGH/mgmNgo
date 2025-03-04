@@ -2,14 +2,87 @@
 <html lang="en" class="h-full">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="MGM NGO - Transforming lives through healthcare, education and skill development. Join us in our mission to empower underprivileged communities since 1982."
+    />
+    <meta
+      name="keywords"
+      content="NGO, charity, education, healthcare, skill development, community service, donations, volunteer, India"
+    />
+    <meta name="author" content="MGM NGO" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="MGM NGO - Empowering Lives" />
+    <meta
+      property="og:description"
+      content="Join MGM NGO in transforming lives through healthcare, education and skill development programs."
+    />
+    <meta property="og:image" content="/logo.png" />
+    <meta property="og:url" content="https://mgmngo.org" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="MGM NGO - Empowering Lives" />
+    <meta
+      name="twitter:description"
+      content="Join MGM NGO in transforming lives through healthcare, education and skill development programs."
+    />
+    <meta name="twitter:image" content="/logo.png" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://mgmngo.org" />
+
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <link href="/src/style.css" rel="stylesheet" />
     <link
       href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
       rel="stylesheet"
     />
-    <title>MGM NGO - Empowering Lives</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css"
+    />
+    <title>
+      MGM NGO - Empowering Lives Through Healthcare & Education | Since 1982
+    </title>
+
+    <!-- Schema.org markup -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "NGO",
+        "name": "MGM NGO",
+        "description": "Empowering lives through healthcare, education and skill development since 1982",
+        "foundingDate": "1982",
+        "url": "https://mgmngo.org",
+        "logo": "https://mgmngo.org/logo.png",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "123 NGO Street",
+          "addressLocality": "City",
+          "addressRegion": "State",
+          "postalCode": "000000",
+          "addressCountry": "IN"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+91-1234567891",
+          "contactType": "customer service",
+          "email": "contact@mgmngo.org"
+        },
+        "sameAs": [
+          "https://facebook.com/mgmngo",
+          "https://twitter.com/mgmngo",
+          "https://instagram.com/mgmngo",
+          "https://linkedin.com/company/mgmngo"
+        ]
+      }
+    </script>
     <style>
       #logout-btn,
       #mobile-logout-btn {
@@ -32,48 +105,218 @@
       main {
         flex: 1;
       }
+
+      .nav-link {
+        position: relative;
+        color: white;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        transition: color 0.3s;
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 50%;
+        background-color: white;
+        transition: all 0.3s;
+        transform: translateX(-50%);
+      }
+
+      .nav-link:hover::after {
+        width: 80%;
+      }
+
+      .mgm-header {
+        transition: background-color 0.3s;
+      }
+
+      .mgm-header.scrolled {
+        background-color: rgba(22, 101, 52, 0.95);
+        backdrop-filter: blur(5px);
+      }
+
+      /* Mobile menu styles */
+      .mobile-menu {
+        display: none;
+        position: fixed;
+        top: 80px;
+        left: 0;
+        right: 0;
+        background-color: rgba(22, 101, 52, 0.95);
+        padding: 1rem;
+        backdrop-filter: blur(5px);
+      }
+
+      .mobile-menu.active {
+        display: block;
+      }
+
+      .mobile-menu a {
+        display: block;
+        color: white;
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .mobile-menu a:last-child {
+        border-bottom: none;
+      }
+
+      #mobile-signup-btn {
+        position: relative;
+        overflow: hidden;
+        border: 2px solid #166534;
+        background: linear-gradient(45deg, #ffffff, #f0fff4);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      #mobile-signup-btn:hover {
+        background: linear-gradient(45deg, #f0fff4, #ffffff);
+        border-color: #15803d;
+      }
+
+      #mobile-signup-btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          to right,
+          transparent,
+          rgba(255, 255, 255, 0.5),
+          transparent
+        );
+        transition: 0.5s;
+      }
+
+      #mobile-signup-btn:hover::before {
+        left: 100%;
+      }
+
+      #mobile-signup-btn:active {
+        transform: scale(0.95);
+      }
+
+      #mobile-signup-btn i,
+      #mobile-signup-btn span {
+        color: #166534;
+        font-weight: 600;
+      }
+
+      #mobile-signup-btn:hover i,
+      #mobile-signup-btn:hover span {
+        color: #15803d;
+      }
     </style>
   </head>
-  <body class="flex flex-col min-h-screen">
+  <body class="flex flex-col min-h-screen bg-gray-50">
     <div id="app">
-      <header class="bg-green-800 text-white py-4 px-6">
-        <div class="flex justify-between items-center">
-          <div class="flex items-center">
-            <img src="logo.png" alt="MGM NGO Logo" class="h-10 mr-3" />
-            <h1 class="text-2xl font-bold">MGM NGO - Empowering Lives</h1>
-          </div>
+      <header class="mgm-header sticky top-0 z-50 bg-green-800">
+        <div class="container mx-auto px-4">
+          <div class="flex justify-between items-center py-4">
+            <div class="flex items-center space-x-4">
+              <img
+                src="logo.png"
+                alt="MGM NGO"
+                class="h-12 w-12 rounded-full shadow-lg"
+              />
+              <div>
+                <h1 class="header-title text-2xl font-bold text-white">
+                  MGM NGO
+                </h1>
+                <p class="header-subtitle text-sm text-green-100">
+                  Empowering Lives Since 1982
+                </p>
+              </div>
+            </div>
 
-          <!-- Hamburger menu button for mobile -->
-          <button class="md:hidden" id="menu-toggle">
-            <i class="ri-menu-3-line text-2xl"></i>
-          </button>
+            <nav class="hidden md:flex items-center space-x-6">
+              <a href="about.html" class="nav-link">
+                <i class="fas fa-info-circle mr-2"></i>About
+              </a>
+              <a href="healthcare.html" class="nav-link">
+                <i class="fas fa-heartbeat mr-2"></i>Healthcare
+              </a>
+              <a href="education.html" class="nav-link">
+                <i class="fas fa-graduation-cap mr-2"></i>Education
+              </a>
+              <a href="skills.html" class="nav-link">
+                <i class="fas fa-tools mr-2"></i>Skills
+              </a>
+              <a href="contact.html" class="nav-link">
+                <i class="fas fa-envelope mr-2"></i>Contact
+              </a>
+              <button
+                id="signup-btn"
+                class="bg-white text-green-800 px-6 py-2.5 rounded-full hover:bg-green-100 transition-colors duration-300 font-semibold shadow-md hover:shadow-lg"
+              >
+                <i class="fas fa-user mr-2"></i>Login/Sign Up
+              </button>
+            </nav>
 
-          <!-- Navigation menu -->
-          <nav class="hidden md:flex md:space-x-4">
-            <a href="about.html" class="hover:text-gray-300">About Us</a>
-            <button id="signup-btn" class="hover:text-gray-300 cursor-pointer">
-              Login/Sign Up
+            <!-- Mobile menu button -->
+            <button class="md:hidden text-white p-2" id="menu-toggle">
+              <i class="fas fa-bars text-2xl"></i>
             </button>
-            <a href="donate.html" class="hover:text-gray-300">Donate</a>
-            <a href="contact.html" class="hover:text-gray-300">Contact</a>
-          </nav>
+          </div>
         </div>
 
         <!-- Mobile menu -->
-        <nav class="hidden mt-4 md:hidden" id="mobile-menu">
-          <div class="flex flex-col space-y-2">
-            <a href="about.html" class="hover:text-gray-300">About Us</a>
-            <button
-              id="mobile-signup-btn"
-              class="hover:text-gray-300 cursor-pointer text-left"
-            >
-              Login/Sign Up
-            </button>
-            <a href="donate.html" class="hover:text-gray-300">Donate</a>
-            <a href="contact.html" class="hover:text-gray-300">Contact</a>
-          </div>
-        </nav>
+        <div class="mobile-menu md:hidden" id="mobile-menu">
+          <a href="about.html"><i class="fas fa-info-circle mr-2"></i>About</a>
+          <a href="healthcare.html"
+            ><i class="fas fa-heartbeat mr-2"></i>Healthcare</a
+          >
+          <a href="education.html"
+            ><i class="fas fa-graduation-cap mr-2"></i>Education</a
+          >
+          <a href="skills.html"><i class="fas fa-tools mr-2"></i>Skills</a>
+          <a href="contact.html"><i class="fas fa-envelope mr-2"></i>Contact</a>
+          <a
+            href="#"
+            id="mobile-signup-btn"
+            class="bg-white text-green-800 rounded-full mt-4 text-center py-3 font-bold shadow-lg flex items-center justify-center space-x-2 mx-4 hover:bg-green-100 transition-all duration-300 transform hover:scale-105"
+          >
+            <i class="fas fa-user text-lg text-green-800"></i>
+            <span class="text-green-800 text-lg">Login/Sign Up</span>
+          </a>
+        </div>
       </header>
+
+      <!-- Hero Section -->
+      <section class="hero-section relative h-[600px] overflow-hidden">
+        <div class="hero-overlay absolute inset-0"></div>
+        <div
+          class="container mx-auto px-4 h-full flex items-center relative z-10"
+        >
+          <div class="max-w-2xl">
+            <h1 class="hero-text text-5xl font-bold mb-6 animate-slide-up">
+              Transforming Lives Through Healthcare & Education
+            </h1>
+            <p class="hero-text text-xl mb-8 animate-fade-in">
+              Join us in our mission to provide quality healthcare and education
+              to those in need.
+            </p>
+            <div class="flex space-x-4">
+              <a href="donate.html" class="btn-primary">
+                <i class="fas fa-heart mr-2"></i>Donate Now
+              </a>
+              <a
+                href="about.html"
+                class="btn-secondary bg-white text-primary-dark px-6 py-2 rounded-full font-semibold hover:bg-gray-100"
+              >
+                <i class="fas fa-arrow-right mr-2"></i>Learn More
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <main class="flex-1 p-8">
         <!-- Restored Projects Section -->
@@ -154,7 +397,7 @@
       <!-- Auth Modal (Signup/Login) -->
       <div
         id="signup-modal"
-        class="fixed inset-0 bg-transparent backdrop-blur-sm flex justify-center items-center hidden z-50"
+        class="fixed inset-0 bg-transparent backdrop-blur-sm flex justify-center items-center z-50"
       >
         <div class="bg-white p-6 rounded-lg shadow-lg w-96 max-w-full mx-4">
           <!-- Success message (hidden by default) -->
@@ -306,10 +549,148 @@
       </div>
 
       <!-- Footer -->
-      <footer class="bg-green-800 text-white py-4 px-6 text-center mt-auto">
-        &copy; 2025 MGM NGO. All rights reserved.
+      <footer class="bg-green-800 text-white py-12">
+        <div class="container mx-auto px-4">
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <!-- Organization Info -->
+            <div class="space-y-4">
+              <div class="flex items-center space-x-3">
+                <img
+                  src="logo.png"
+                  alt="MGM NGO"
+                  class="h-10 w-10 rounded-full"
+                />
+                <h3 class="text-xl font-bold">MGM NGO</h3>
+              </div>
+              <p class="text-green-100 text-sm">
+                Empowering lives through healthcare, education, and skill
+                development since 1982.
+              </p>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+              <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+              <ul class="space-y-2">
+                <li>
+                  <a href="about.html" class="text-green-100 hover:text-white"
+                    >About Us</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="healthcare.html"
+                    class="text-green-100 hover:text-white"
+                    >Healthcare</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="education.html"
+                    class="text-green-100 hover:text-white"
+                    >Education</a
+                  >
+                </li>
+                <li>
+                  <a href="skills.html" class="text-green-100 hover:text-white"
+                    >Skills</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div>
+              <h4 class="text-lg font-semibold mb-4">Contact Us</h4>
+              <ul class="space-y-2">
+                <li class="flex items-center space-x-2">
+                  <i class="fas fa-envelope text-green-100"></i>
+                  <a
+                    href="mailto:contact@mgmngo.org"
+                    class="text-green-100 hover:text-white"
+                    >contact@mgmngo.org</a
+                  >
+                </li>
+                <li class="flex items-center space-x-2">
+                  <i class="fas fa-phone text-green-100"></i>
+                  <a
+                    href="tel:+911234567891"
+                    class="text-green-100 hover:text-white"
+                    >+91-1234567891</a
+                  >
+                </li>
+                <li class="flex items-center space-x-2">
+                  <i class="fas fa-map-marker-alt text-green-100"></i>
+                  <span class="text-green-100"
+                    >123 NGO Street, City, State</span
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <!-- Social Links -->
+            <div>
+              <h4 class="text-lg font-semibold mb-4">Follow Us</h4>
+              <div class="flex space-x-4">
+                <a href="#" class="text-green-100 hover:text-white text-xl">
+                  <i class="fab fa-facebook"></i>
+                </a>
+                <a href="#" class="text-green-100 hover:text-white text-xl">
+                  <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="text-green-100 hover:text-white text-xl">
+                  <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="text-green-100 hover:text-white text-xl">
+                  <i class="fab fa-linkedin"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="border-t border-green-700 mt-8 pt-8 text-center text-green-100"
+          >
+            <p>&copy; 2025 MGM NGO. All rights reserved.</p>
+          </div>
+        </div>
       </footer>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.7/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.7/ScrollTrigger.min.js"></script>
     <script type="module" src="/src/main.js"></script>
+    <script>
+      // Add this before your existing scripts
+      document.addEventListener("DOMContentLoaded", function () {
+        const header = document.querySelector(".mgm-header");
+        const menuToggle = document.getElementById("menu-toggle");
+        const mobileMenu = document.getElementById("mobile-menu");
+
+        // Scroll handler for header
+        window.addEventListener("scroll", () => {
+          if (window.scrollY > 50) {
+            header.classList.add("scrolled");
+          } else {
+            header.classList.remove("scrolled");
+          }
+        });
+
+        // Mobile menu toggle
+        menuToggle.addEventListener("click", () => {
+          mobileMenu.classList.toggle("active");
+          menuToggle.querySelector("i").classList.toggle("fa-bars");
+          menuToggle.querySelector("i").classList.toggle("fa-times");
+        });
+
+        // Close mobile menu on window resize
+        window.addEventListener("resize", () => {
+          if (window.innerWidth >= 768) {
+            mobileMenu.classList.remove("active");
+            menuToggle.querySelector("i").classList.add("fa-bars");
+            menuToggle.querySelector("i").classList.remove("fa-times");
+          }
+        });
+      });
+    </script>
   </body>
 </html>
