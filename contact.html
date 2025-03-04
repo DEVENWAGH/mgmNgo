@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,8 +13,19 @@
       rel="stylesheet"
     />
     <link href="style.css" rel="stylesheet" />
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      main {
+        flex: 1;
+      }
+    </style>
   </head>
-  <body class="bg-gray-50">
+  <body class="flex flex-col min-h-screen">
     <header class="bg-green-800 text-white py-4 px-6">
       <div class="container mx-auto flex justify-between items-center">
         <h1 class="text-2xl font-bold"><a href="index.html">MGM NGO</a></h1>
@@ -27,12 +38,32 @@
       </div>
     </header>
 
-    <main class="container mx-auto px-4 py-8">
-      <section class="max-w-4xl min-h-screen mx-auto">
+    <main class="container mx-auto px-4 py-8 flex-1">
+      <section class="max-w-4xl mx-auto">
         <h1 class="text-3xl font-bold mb-6">Contact Us</h1>
-        <form class="bg-white p-6 rounded-lg shadow-md">
+
+        <!-- Success message (hidden by default) -->
+        <div
+          id="contact-success-message"
+          class="hidden bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4"
+        >
+          <p>Thank you for your message! We'll get back to you soon.</p>
+        </div>
+
+        <!-- Error message (hidden by default) -->
+        <div
+          id="contact-error-message"
+          class="hidden bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4"
+        >
+          <p id="contact-error-text">An error occurred. Please try again.</p>
+        </div>
+
+        <form id="contact-form" class="bg-white p-6 rounded-lg shadow-md">
           <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+            <label
+              class="block text-gray-700 text-sm font-bold mb-2"
+              for="name"
+            >
               Name
             </label>
             <input
@@ -40,10 +71,14 @@
               id="name"
               type="text"
               placeholder="Your name"
+              required
             />
           </div>
           <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
+            <label
+              class="block text-gray-700 text-sm font-bold mb-2"
+              for="email"
+            >
               Email
             </label>
             <input
@@ -51,10 +86,14 @@
               id="email"
               type="email"
               placeholder="Your email"
+              required
             />
           </div>
           <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="message">
+            <label
+              class="block text-gray-700 text-sm font-bold mb-2"
+              for="message"
+            >
               Message
             </label>
             <textarea
@@ -62,12 +101,13 @@
               id="message"
               rows="5"
               placeholder="Your message"
+              required
             ></textarea>
           </div>
           <div class="flex items-center justify-between">
             <button
+              type="submit"
               class="bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              type="button"
             >
               Send
             </button>
@@ -76,13 +116,62 @@
       </section>
     </main>
 
-    <footer class="bg-green-800 text-white py-4 mt-8">
+    <footer class="bg-green-800 text-white py-4 mt-auto">
       <div class="container mx-auto text-center">
         <p>&copy; 2025 MGM NGO. All rights reserved.</p>
       </div>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.7/gsap.min.js"></script>
-    <script src="script.js"></script>
+    <script type="module">
+      import { submitContact } from "./src/main.js";
+
+      // Contact form submission handler
+      document
+        .getElementById("contact-form")
+        .addEventListener("submit", async function (event) {
+          event.preventDefault();
+
+          // Get form data
+          const contactData = {
+            name: document.getElementById("name").value,
+            email: document.getElementById("email").value,
+            message: document.getElementById("message").value,
+          };
+
+          try {
+            const response = await submitContact(contactData);
+
+            if (response.success) {
+              // Show success message
+              document
+                .getElementById("contact-success-message")
+                .classList.remove("hidden");
+              document.getElementById("contact-form").reset();
+
+              // Scroll to success message
+              document
+                .getElementById("contact-success-message")
+                .scrollIntoView({ behavior: "smooth" });
+            } else {
+              // Show error message
+              const errorElement =
+                document.getElementById("contact-error-text");
+              if (errorElement) {
+                errorElement.textContent =
+                  response.message ||
+                  "Failed to send your message. Please try again.";
+              }
+              document
+                .getElementById("contact-error-message")
+                .classList.remove("hidden");
+            }
+          } catch (error) {
+            console.error("Error submitting contact form:", error);
+            document
+              .getElementById("contact-error-message")
+              .classList.remove("hidden");
+          }
+        });
+    </script>
   </body>
 </html>

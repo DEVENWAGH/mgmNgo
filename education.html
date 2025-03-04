@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,8 +13,19 @@
       rel="stylesheet"
     />
     <link href="style.css" rel="stylesheet" />
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      main {
+        flex: 1;
+      }
+    </style>
   </head>
-  <body class="bg-gray-50">
+  <body class="flex flex-col min-h-screen bg-gray-50">
     <header class="bg-green-800 text-white py-4 px-6">
       <div class="container mx-auto flex justify-between items-center">
         <h1 class="text-2xl font-bold"><a href="index.html">MGM NGO</a></h1>
@@ -29,7 +40,7 @@
     <main class="flex-1 p-8 text-center">
       <div class="bg-gray-100 p-6 rounded-lg shadow-md">
         <img
-          src="images/edu.jpg"
+          src="edu.jpg"
           alt="Education"
           class="w-full h-64 object-cover rounded-lg mb-4"
         />
@@ -47,36 +58,28 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-6">
         <div class="bg-white shadow-md rounded-lg p-4 hover:shadow-lg">
           <img
-            src="images/edu.jpg"
+            src="edu.jpg"
             alt="Education for All"
             class="w-full h-54 object-cover mb-4 rounded"
           />
         </div>
         <div class="bg-white shadow-md rounded-lg p-4 hover:shadow-lg">
           <img
-            src="images/edu1.jpg"
+            src="edu1.jpg"
             alt="Education for All"
             class="w-full h-54 object-cover mb-4 rounded"
           />
         </div>
         <div class="bg-white shadow-md rounded-lg p-4 hover:shadow-lg">
           <img
-            src="images/edu2.jpg"
+            src="edu2.jpg"
             alt="Education for All"
             class="w-full h-54 object-cover mb-4 rounded"
           />
         </div>
         <div class="bg-white shadow-md rounded-lg p-4 hover:shadow-lg">
           <img
-            src="images/edu3.jpg"
-            alt="Education for All"
-            class="w-full h-54 object-cover mb-4 rounded"
-          />
-        </div>
-
-        <div class="bg-white shadow-md rounded-lg p-4 hover:shadow-lg">
-          <img
-            src="images/edu4.jpg"
+            src="edu3.jpg"
             alt="Education for All"
             class="w-full h-54 object-cover mb-4 rounded"
           />
@@ -84,7 +87,15 @@
 
         <div class="bg-white shadow-md rounded-lg p-4 hover:shadow-lg">
           <img
-            src="images/edu5.jpg"
+            src="edu4.jpg"
+            alt="Education for All"
+            class="w-full h-54 object-cover mb-4 rounded"
+          />
+        </div>
+
+        <div class="bg-white shadow-md rounded-lg p-4 hover:shadow-lg">
+          <img
+            src="edu5.jpg"
             alt="Education for All"
             class="w-full h-54 object-cover mb-4 rounded"
           />
@@ -102,10 +113,34 @@
             </p>
           </div>
         </div>
+        <div class="mt-8 p-6 rounded-lg text-center flex justify-center w-full">
+          <div class="bg-gray-200 p-6 rounded-lg max-w-4xl w-full">
+            <h2 class="text-xl font-bold mb-2">Why Education Matters</h2>
+            <p class="text-gray-700">
+              Education is the most powerful tool we can use to change the
+              world. It fosters personal growth, opens opportunities, and
+              strengthens communities. Our goal is to ensure that every child
+              has access to quality education, empowering them for a brighter
+              future.
+            </p>
+          </div>
+        </div>
+        <div class="mt-8 p-6 rounded-lg text-center flex justify-center w-full">
+          <div class="bg-gray-200 p-6 rounded-lg max-w-4xl w-full">
+            <h2 class="text-xl font-bold mb-2">Why Education Matters</h2>
+            <p class="text-gray-700">
+              Education is the most powerful tool we can use to change the
+              world. It fosters personal growth, opens opportunities, and
+              strengthens communities. Our goal is to ensure that every child
+              has access to quality education, empowering them for a brighter
+              future.
+            </p>
+          </div>
+        </div>
       </div>
     </main>
 
-    <footer class="bg-green-800 text-white py-4 mt-8">
+    <footer class="bg-green-800 text-white py-4 mt-auto">
       <div class="container mx-auto text-center">
         <p>&copy; 2025 MGM NGO. All rights reserved.</p>
       </div>

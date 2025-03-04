@@ -8,7 +8,7 @@
 /* Ensure sections have some space for scroll animations */
 section {
   padding: 2rem 0;
-  overflow: hidden; /* Prevents horizontal scrollbar during animations */
+  overflow: hidden;
 }
 
 /* Box shadow for hover effects */
@@ -69,4 +69,9 @@ section {
 /* Logged in user styles */
 .logged-in {
   @apply font-semibold text-green-200;
+}
+
+#logout-btn,
+#mobile-logout-btn {
+  @apply px-2 py-1 rounded text-sm bg-red-700 hover:bg-red-600 transition-colors;
 }
